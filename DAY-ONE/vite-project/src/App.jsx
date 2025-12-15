@@ -3,15 +3,18 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Card from "./component/Card";
+import Header from "./component/Header";
+import Hero from "./component/Hero";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1 className="text-4xl text-red-500 border-2 border-blue-400">
-        Learn react with sameer
-      </h1>
+     
+      <Hero/>
+      <Header/>
+
       <div className="flex gap-4">
 
     <Card title="Chrishmas tree" imgUrl="https://images.pexels.com/photos/6129284/pexels-photo-6129284.jpeg"/>
