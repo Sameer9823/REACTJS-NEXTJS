@@ -29,12 +29,9 @@ function Form({ onAdd }) {
           />
         </div>
         <div className="form-group">
-          <select
-            value={service}
-            onChange={(e) => setService(e.target.value)}
-          >
+          <select value={service} onChange={(e) => setService(e.target.value)}>
             <option value="">Select Service</option>
-              <option value="consultation">consultation</option>
+            <option value="consultation">consultation</option>
             <option value="payment">payment</option>
             <option value="support">support</option>
           </select>
