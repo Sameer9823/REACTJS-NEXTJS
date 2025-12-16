@@ -3,6 +3,7 @@ import "./App.css";
 import { useState } from "react";
 function App() {
   const [count, setCount] = useState(0);
+  const [inputValue, setInputValue] = useState(0);
   // const increment = (numval) => {
   //   setCount(count + 1);
   //   setCount((prevCount) => prevCount + numval + 1);
@@ -22,10 +23,13 @@ function App() {
         <button onClick={() => setCount(count + 1)} style={{ margin: "0 5px" }}>
           Increment
         </button>
-        <button onClick={() => setCount(count - 1)} style={{ margin: "0 5px" }}>
+        <button
+          onClick={() => setCount((prevCount) => Math.max(0, prevCount - 1))}
+          style={{ margin: "0 5px" }}
+        >
           Decrement
         </button>
-        <button onClick={() => {}} style={{ margin: "0 5px" }}>
+        <button onClick={() => setCount(0)} style={{ margin: "0 5px" }}>
           Reset
         </button>
       </div>
@@ -43,14 +47,19 @@ function App() {
             color: "white",
             outline: "none",
           }}
-          value="8"
-          onChange={() => {}}
+          value={inputValue}
+          onChange={(e) => setInputValue(Number(e.target.value))}
           type="text"
         />
         <button
-        style={{margin: "0 5px"}}
-        onClick={() => {}}
-        >Set to 8</button>
+          style={{ margin: "0 5px" }}
+          onClick={() => {
+            setCount(Number(inputValue));
+            setInputValue(0);
+          }}
+        >
+          Set to {inputValue}
+        </button>
       </div>
     </>
   );
