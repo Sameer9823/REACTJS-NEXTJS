@@ -132,7 +132,7 @@ export default function ComplexProps() {
   ];
 
   return (
-    <section className="p-8 bg-white rounded-xl shadow-lg">
+    <section className="p-8 bg-white rounded-xl shadow-lg mt-8">
       <h2 className="text-3xl font-bold mb-4 text-gray-800">
         Complex/Nested Props
       </h2>
