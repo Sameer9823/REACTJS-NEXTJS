@@ -2,10 +2,11 @@ import BasicProps from "./components/BasicProps";
 import ChildrenProps from "./components/ChildrenProps";
 import ComplexProps from "./components/ComplexProps";
 import RefProps from "./components/RefProps";
-import ThemeToggler from "./components/ThemeToggler";
+import ThemeToggler, { ThemeProvider, useTheme } from "./components/ThemeToggler";
 
-const isDark = true;
+
 function Navigation() {
+  const isDark = true
   const sections = [
     { id: "basic", label: "Basic Props", icons: "✨" },
     { id: "ref", label: "Ref Props", icons: "🔖" },
@@ -40,14 +41,15 @@ function Navigation() {
 }
 
 function AppContent() {
+  const { isDark } = useTheme();
   return (
     <div className={"min-h-screen bg-gray-800"}>
       <Navigation />
-      <div className="container mx-auto px-4 py-8">
+      <div className={`container mx-auto px-4 py-8 ${
+            isDark ? "bg-gray-800 " : "bg-purple-500 text-gray-950"
+          }`}>
         <header
-          className={`text-center mb-12 transition-colors ${
-            isDark ? "text-white" : "text-gray-900"
-          }`}
+          className={`text-center mb-12 transition-colors `}
         >
           <h1 className="text-5xl font-bold mb-4">React props explained</h1>
           <p
@@ -58,20 +60,20 @@ function AppContent() {
         </header>
 
         <div className="space-y-8">
-          <div id="basic" className="scroll-mt-200">
+          <div id="basic" className="scroll-mt-200 m-4">
             <BasicProps />
           </div>
         </div>
-        <div id="basic" className="scroll-mt-200">
+        <div id="basic" className="scroll-mt-200 m-4">
           <RefProps />
         </div>
-        <div id="basic" className="scroll-mt-200">
+        <div id="basic" className="scroll-mt-200 m-4">
           <ChildrenProps />
         </div>
-        <div id="basic" className="scroll-mt-200">
+        <div id="basic" className="scroll-mt-200 m-4">
           <ComplexProps />
         </div>
-        <div id="basic" className="scroll-mt-200">
+        <div id="basic" className="scroll-mt-200 m-4">
           <ThemeToggler />
         </div>
       </div>
@@ -90,9 +92,9 @@ function AppContent() {
 }
 function App() {
   return (
-    <>
-      <AppContent />;
-    </>
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

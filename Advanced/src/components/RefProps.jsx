@@ -32,10 +32,14 @@ function RefProps() {
     }
   }
   const clearInput = () =>{
-    if(inputRef.current){
+    if(inputRef.current || secondRef.current){
       inputRef.current.value = '';
       inputRef.current.focus();
+      secondRef.current.value = '';
+      secondRef.current.focus();
+
     }
+    
   }
   const focusSecondInput = () =>{
     secondRef.current?.focus();
@@ -87,7 +91,7 @@ function RefProps() {
           </div>
         </div>
       </div>
-      
+
     </section>
   )
 }
